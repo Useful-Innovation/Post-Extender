@@ -25,13 +25,13 @@ abstract class PostExtender
   }
 
   public static function all(array $options = []) {
-    $post_type = static::classToPostType();
-    $options['post_type'] = $post_type;
+    $queryer   = new Queryer();
+    $extender  = new Extender();
+
+    $options['post_type'] = static::classToPostType();
     $posts = get_posts(array_merge(self::$default_options, $options));
-    $queryer  = new Queryer();
-    $extender = new Extender();
     $posts = $extender->extendPosts($posts, $queryer->getMetaFor($posts));
-    foreach($posts as $post) {
+    foreach($posts->toArray() as $key => $post) {
       $post = new static($post);
       $posts[$post->ID] = $post;
     }

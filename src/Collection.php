@@ -40,7 +40,7 @@ class Collection implements \ArrayAccess, \IteratorAggregate
   //  IteratorAggregate
   //
   public function getIterator() {
-    return new \ArrayIterator($this->items);
+    return new \ArrayIterator($this->toArray());
   }
 
   //
@@ -57,6 +57,10 @@ class Collection implements \ArrayAccess, \IteratorAggregate
     } else {
       $this->items[] = $item;
     }
+  }
+
+  public function toArray() {
+    return $this->items;
   }
 
   public function length() {

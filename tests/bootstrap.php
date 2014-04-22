@@ -14,8 +14,7 @@ class WPDB
   public $prefix = 'wp_';
   public static $counter = 0;
   public function __construct() {
-    $temp = $this;
-    register_shutdown_function(function() use ($temp) {
+    register_shutdown_function(function() {
         echo 'SQL Queries: ' . self::$counter . PHP_EOL;
     });
   }
@@ -54,5 +53,9 @@ function get_posts($options) {
 
 class Page extends \GoBrave\PostExtender\PostExtender
 {
+  protected $something_else;
 
+  public function something() {
+    $this->something_else = 'Asd';
+  }
 }
