@@ -7,7 +7,7 @@ Extends posts, pages and any custom post type with all it's meta data in one ext
 Add the following to your composer.json file and run `composer install`
 
     "require": {
-      "doctordesh/cornerstone" : "dev-master"
+      "gobrave/post-extender" : "dev-master"
     },
     "repositories" : [
       {
