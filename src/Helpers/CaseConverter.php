@@ -32,14 +32,4 @@ class CaseConverter
       $string
     );
   }
-
-  //
-  //  Gives
-  //    page             -> Page
-  //    product_category -> ProductCategory
-  //
-  public function postTypeToClassName($post_type) {
-    $class_name = $this->snakeToCamel($post_type, true);
-    return $class_name;
-  }
 }

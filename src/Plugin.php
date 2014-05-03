@@ -13,7 +13,7 @@ class Plugin
   public function warning() {
     \add_action('admin_notices', function() {
       global $current_screen;
-      echo '<div class="error"><p>PostExtender kräver Magic Fields 2. Gå till <a href="/wp-admin/plugins.php">plugins</a> för att aktivera</p></div>';
+      echo '<div class="error"><p>The Post Extender depends on Magic Fields 2. Please go to <a href="/wp-admin/plugins.php">plugins</a> for activation</p></div>';
     });
   }
 }

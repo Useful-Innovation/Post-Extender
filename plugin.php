@@ -4,7 +4,7 @@
  * @version 0.1
  */
 /*
-Plugin Name: Post Extender
+Plugin Name: Magic Fields 2 - Post Extender
 Description: Extends posts with all it's meta data in one db-request
 Author: Emil Lunnergård
 Version: 0.1
