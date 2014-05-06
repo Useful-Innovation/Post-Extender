@@ -40,11 +40,13 @@ $titles = [
 ];
 function get_post($id) {
   global $titles;
+  WPDB::$counter++;
   return new WP_Post(['ID' => $id, 'post_title' => $titles[$id]]);
 }
 
 function get_posts($options) {
   global $titles;
+  WPDB::$counter++;
   return [
     new WP_Post(['ID' => 2, 'post_title' => $titles[2]]),
     new WP_Post(['ID' => 7, 'post_title' => $titles[7]])

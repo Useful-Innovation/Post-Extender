@@ -5,6 +5,8 @@ namespace GoBrave\PostExtender;
 abstract class PostExtender
 {
   public $post;
+  public static $cache = [];
+
   private static $default_options = [
     'numberposts' => -1,
     'orderby'     => 'menu_order',
@@ -20,8 +22,11 @@ abstract class PostExtender
   }
 
   public static function find($id) {
-    $post = \get_post($id);
-    return new static($post);
+    if(!isset(self::$cache[$id])) {
+      $post = \get_post($id);
+      self::$cache[$id] = new static($post);
+    }
+    return self::$cache[$id];
   }
 
   public static function all(array $options = []) {
