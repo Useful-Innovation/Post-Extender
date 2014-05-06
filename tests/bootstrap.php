@@ -61,3 +61,5 @@ class Page extends \GoBrave\PostExtender\PostExtender
     $this->something_else = 'Asd';
   }
 }
+
+class Startpage extends \GoBrave\PostExtender\PostExtender { }

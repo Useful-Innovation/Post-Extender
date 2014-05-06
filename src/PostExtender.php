@@ -50,6 +50,12 @@ abstract class PostExtender
     return self::$cache[$cache_key];
   }
 
+  public static function get() {
+    $posts = self::all();
+    $posts = $posts->toArray();
+    return array_shift($posts);
+  }
+
   public function __GET($key) {
     if(isset($this->{$key})) {
       return $this->{$key};

@@ -32,6 +32,12 @@ class PostExtenderTest extends PHPUnit_Framework_TestCase
     $this->assertSame($extended_posts[7]->post_title, 'Ytterligare sida', 'Checking value');
   }
 
+  public function testUnique() {
+    $startpage = Startpage::get();
+    $this->assertTrue($startpage instanceof Startpage, 'Checking class');
+    $this->assertTrue($startpage instanceof PostExtender, 'Checking Inheritance');
+  }
+
   public function testClassSpecificAttribute() {
     $page = Page::find(2);
     $page->something();
