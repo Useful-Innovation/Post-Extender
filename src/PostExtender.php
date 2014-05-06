@@ -18,7 +18,10 @@ abstract class PostExtender
   public function __construct(\WP_Post $post) {
     $queryer  = new Queryer();
     $extender = new Extender();
-    $this->post = $extender->extendPost($post, $queryer->getMetaFor([$post]));
+    if(!isset($post->_extended) OR $post->_extended == false) {
+      $post = $extender->extendPost($post, $queryer->getMetaFor([$post]));
+    }
+    $this->post = $post;
   }
 
   public static function find($id) {
@@ -30,17 +33,21 @@ abstract class PostExtender
   }
 
   public static function all(array $options = []) {
-    $queryer   = new Queryer();
-    $extender  = new Extender();
+    $queryer  = new Queryer();
+    $extender = new Extender();
 
     $options['post_type'] = static::classToPostType();
-    $posts = get_posts(array_merge(self::$default_options, $options));
-    $posts = $extender->extendPosts($posts, $queryer->getMetaFor($posts));
-    foreach($posts->toArray() as $key => $post) {
-      $post = new static($post);
-      $posts[$post->ID] = $post;
+    $cache_key = serialize($options);
+    if(!isset(self::$cache[$cache_key])) {
+      $posts = get_posts(array_merge(self::$default_options, $options));
+      $posts = $extender->extendPosts($posts, $queryer->getMetaFor($posts));
+      foreach($posts->toArray() as $key => $post) {
+        $post = new static($post);
+        $posts[$post->ID] = $post;
+      }
+      self::$cache[$cache_key] = $posts;
     }
-    return $posts;
+    return self::$cache[$cache_key];
   }
 
   public function __GET($key) {
