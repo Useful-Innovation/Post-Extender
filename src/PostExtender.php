@@ -64,8 +64,7 @@ abstract class PostExtender
     }
   }
 
-  private static function classToPostType() {
-    $case_converter = new Helpers\CaseConverter();
-    return $case_converter->camelToSnake(get_called_class());
+  public static function classToPostType() {
+    return Helpers\CaseConverter::camelToSnake(get_called_class());
   }
 }

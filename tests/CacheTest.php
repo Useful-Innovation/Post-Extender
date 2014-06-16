@@ -22,6 +22,6 @@ class CacheTest extends PHPUnit_Framework_TestCase
     $this->assertSame($step1 - $start, 2);
     Page::all();
     $step2 = WPDB::$counter;
-    $this->assertSame($step2 - $step1, 0);
+    $this->assertSame($step2 - $step1, 0, 'Testing cache for Page::all');
   }
 }

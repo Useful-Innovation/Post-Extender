@@ -1,5 +1,5 @@
 {
-    "name": "gobrave/post-extender",
+    "name": "gobrave/magic-fields-2-post-extender",
     "description": "Extends posts with all it's meta data in one db-request",
     "type": "wordpress-plugin",
     "authors": [
