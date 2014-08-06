@@ -30,6 +30,13 @@ class ExtenderTest extends PHPUnit_Framework_TestCase
     $p = $posts[4];
 
     $this->assertTrue($p->info_image instanceof Image, 'Is image?');
+
+    $page = Page::find(7);
+    $group = $page->test[0];
+    $this->assertTrue(is_bool($group['checker']));
+    $this->assertTrue(is_int($group['related']));
+    $this->assertSame($group['select'], 'Option 1');
+    $this->assertSame($group['checkboxes'][0], 'Option 2');
   }
 
   public function testExtendWithDuplicatedFieldInRegularGroup() {

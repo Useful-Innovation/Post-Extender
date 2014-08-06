@@ -13,6 +13,7 @@ Version: 0.1
 require_once(__DIR__ . '/vendor/autoload.php');
 
 \add_action('plugins_loaded', function() {
+  define('MF_POST_EXTENDER', true);
   new GoBrave\PostExtender\Plugin();
 });
 

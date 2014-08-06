@@ -50,6 +50,19 @@ abstract class PostExtender
     return self::$cache[$cache_key];
   }
 
+  public static function findAllByIds(array $ids) {
+    $temp  = self::all();
+    $posts = new Collection();
+
+    foreach($ids as $id) {
+      if(isset($temp[$id])) {
+        $posts[$id] = $temp[$id];
+      }
+    }
+
+    return $posts;
+  }
+
   public static function get() {
     $posts = self::all();
     $posts = $posts->toArray();

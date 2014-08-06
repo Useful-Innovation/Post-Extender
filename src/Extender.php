@@ -71,8 +71,21 @@ class Extender
   }
 
   private function fieldByType($value, $type) {
-    if($type === MF_FIELD_TYPE::IMAGE_MEDIA) {
-      return new DataTypes\Image($value);
+    if($type === MF_FIELD_TYPE::IMAGE_MEDIA)
+      return new DataTypes\Image($value, new WP());
+    if($type === MF_FIELD_TYPE::FILE)
+      return new DataTypes\File($value, new WP(), MF_FILES_URL);
+    if($type === MF_FIELD_TYPE::CHECKBOX)
+      return (bool)$value;
+    if($type === MF_FIELD_TYPE::RELATED_TYPE)
+      return (int)$value;
+    if($type === MF_FIELD_TYPE::CHECKBOX_LIST)
+      return unserialize($value);
+    if($type === MF_FIELD_TYPE::MULTILINE)
+      return new DataTypes\Multiline($value, new WP());
+    if($type === MF_FIELD_TYPE::DROPDOWN) {
+      $temp = unserialize($value);
+      return array_pop($temp);
     }
 
     return $value;

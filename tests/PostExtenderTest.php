@@ -44,4 +44,26 @@ class PostExtenderTest extends PHPUnit_Framework_TestCase
     $this->assertTrue($page instanceof PostExtender, 'Checking class');
     $this->assertSame($page->something_else, 'Asd', 'Checking value');
   }
+
+  public function testFindAllByIds() {
+    $pages = Page::findAllByIds([2, 7]);
+    $this->assertTrue($pages[2] instanceof PostExtender, 'Checking object');
+    $this->assertTrue($pages[7] instanceof PostExtender, 'Checking object');
+
+    $pages = Page::findAllByIds([2]);
+    $this->assertTrue($pages[2] instanceof PostExtender, 'Checking object');
+    $this->assertFalse(isset($pages[7]), '7 shall be missing');
+  }
+
+  public function testFindAllByIdsKeepOrder() {
+    $pages = Page::findAllByIds([2, 7]);
+    $pages = $pages->toArray();
+    $this->assertSame($pages[0]->ID, 2);
+    $this->assertSame($pages[1]->ID, 7);
+
+    $pages = Page::findAllByIds([7, 2]);
+    $pages = $pages->toArray();
+    $this->assertSame($pages[0]->ID, 7);
+    $this->assertSame($pages[1]->ID, 2);
+  }
 }
