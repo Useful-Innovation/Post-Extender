@@ -74,7 +74,7 @@ class Extender
     if($type === MF_FIELD_TYPE::IMAGE_MEDIA)
       return new DataTypes\Image($value, new WP());
     if($type === MF_FIELD_TYPE::FILE)
-      return new DataTypes\File($value, new WP(), MF_FILES_URL);
+      return new DataTypes\File($value, new WP(), MF_FILES_URL, MF_FILES_PATH);
     if($type === MF_FIELD_TYPE::CHECKBOX)
       return (bool)$value;
     if($type === MF_FIELD_TYPE::RELATED_TYPE)

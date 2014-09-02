@@ -10,6 +10,10 @@ Author: Emil Lunnergård
 Version: 0.1
 */
 
+//
+//    This is not a necessary part of the lib. If you want to load this as a plugin, use this file.
+//
+
 require_once(__DIR__ . '/vendor/autoload.php');
 
 if(function_exists('add_action')) {

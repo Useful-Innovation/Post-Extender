@@ -73,7 +73,8 @@ class UIStartpage extends \GoBrave\PostExtender\PostExtender
   const POST_TYPE = 'startpage';
 }
 
-define('MF_FILES_URL', 'http://file_mf/');
+define('MF_FILES_URL', 'http://files_mf/');
+define('MF_FILES_PATH', __DIR__ . '/data/');
 
 class Wp implements \GoBrave\PostExtender\IWP
 {
