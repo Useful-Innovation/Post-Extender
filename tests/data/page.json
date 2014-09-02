@@ -1,0 +1,9 @@
+{
+  "post_type" : "page",
+  "singular"  : "Sida",
+  "plural"    : "Sidor",
+  "parent"    : "ui_category",
+  "has_page"  : true,
+  "single"    : true,
+  "rewrite"   : "sida"
+}

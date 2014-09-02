@@ -1,0 +1,9 @@
+{
+  "post_type" : "page",
+  "singular"  : "Sida",
+  "plural"    : "Sidor",
+  "parent"    : false,
+  "has_page"  : false,
+  "single"    : false,
+  "rewrite"   : false
+}

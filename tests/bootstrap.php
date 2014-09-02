@@ -34,6 +34,7 @@ class WPDB
   }
 }
 
+GoBrave\PostExtender\PostExtender::$struct_dir = __DIR__ . '/data';
 $wpdb = new WPDB();
 
 $titles = [

@@ -21,6 +21,6 @@ class Related
   public function get() {
     $post  = $this->wp->get_post($this->id);
     $class = CaseConverter::snakeToCamel($post->post_type, true);
-    return new $class($post);
+    return $class::extend($post);
   }
 }

@@ -4,8 +4,14 @@ namespace GoBrave\PostExtender;
 
 abstract class PostExtender
 {
+  use \GoBrave\PostExtender\Helpers\Finders;
+
+  private $struct;
+
   public $post;
-  public static $cache = [];
+  public static $struct_dir = false;
+
+  protected static $cache = [];
 
   private static $default_options = [
     'numberposts' => -1,
@@ -15,58 +21,20 @@ abstract class PostExtender
     'meta_value'  => ''
   ];
 
-  public function __construct(\WP_Post $post) {
+  private function __construct(\WP_Post $post) {
     $queryer  = new Queryer();
     $extender = new Extender();
     if(!isset($post->_extended) OR $post->_extended == false) {
       $post = $extender->extendPost($post, $queryer->getMetaFor([$post]));
     }
     $this->post = $post;
-  }
-
-  public static function find($id) {
-    if(!isset(self::$cache[$id])) {
-      $post = \get_post($id);
-      self::$cache[$id] = new static($post);
+    if(self::$struct_dir) {
+      $this->struct = new Struct(self::$struct_dir . '/' . $this->post->post_type . '.json');
     }
-    return self::$cache[$id];
   }
 
-  public static function all(array $options = []) {
-    $queryer  = new Queryer();
-    $extender = new Extender();
-
-    $options['post_type'] = static::classToPostType();
-    $cache_key = serialize($options);
-    if(!isset(self::$cache[$cache_key])) {
-      $posts = get_posts(array_merge(self::$default_options, $options));
-      $posts = $extender->extendPosts($posts, $queryer->getMetaFor($posts));
-      foreach($posts->toArray() as $key => $post) {
-        $post = new static($post);
-        $posts[$post->ID] = $post;
-      }
-      self::$cache[$cache_key] = $posts;
-    }
-    return self::$cache[$cache_key];
-  }
-
-  public static function findAllByIds(array $ids) {
-    $temp  = self::all();
-    $posts = new Collection();
-
-    foreach($ids as $id) {
-      if(isset($temp[$id])) {
-        $posts[$id] = $temp[$id];
-      }
-    }
-
-    return $posts;
-  }
-
-  public static function get() {
-    $posts = self::all();
-    $posts = $posts->toArray();
-    return array_shift($posts);
+  public static function extend(\WP_Post $post) {
+    return new static($post);
   }
 
   public function __GET($key) {
@@ -79,5 +47,9 @@ abstract class PostExtender
 
   public static function classToPostType() {
     return Helpers\CaseConverter::camelToSnake(get_called_class());
+  }
+
+  public function getStruct() {
+    return $this->struct;
   }
 }
