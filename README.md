@@ -2,6 +2,10 @@
 
 Extends posts, pages and any custom post type with all it's meta data in one extra db-query. 
 
+### Versions
+
+Current version is v1.0-rc1
+
 ### Setup
 
 Add the following to your composer.json file and run `composer install`
