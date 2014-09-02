@@ -87,13 +87,13 @@ class ExtenderTest extends PHPUnit_Framework_TestCase
    * @expectedException Exception
    */
   public function testRegularAttributeThatIsProtected() {
-    $page = Page::get();
+    $page = Page::single();
     $page->something();
     $this->assertSame($page->something_else, 'Asd');
   }
 
   public function testRegularAttribute() {
-    $page = Page::get();
+    $page = Page::single();
     $this->assertSame($page->a_public_attribute, 'public');
   }
 

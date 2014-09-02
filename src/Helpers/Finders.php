@@ -47,7 +47,7 @@ trait Finders
     return $posts;
   }
 
-  public static function get() {
+  public static function single() {
     $posts = self::all();
     $posts = $posts->toArray();
     return array_shift($posts);

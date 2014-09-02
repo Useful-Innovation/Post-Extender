@@ -7,8 +7,8 @@ class FindersTest extends PHPUnit_Framework_TestCase
     $this->assertTrue($collection->length() > 0);
   }
 
-  public function testGet() {
-    $page = Page::get();
+  public function testSingle() {
+    $page = Page::single();
     $this->assertTrue($page instanceof \GoBrave\PostExtender\PostExtender);
   }
 
