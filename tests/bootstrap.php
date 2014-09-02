@@ -59,6 +59,7 @@ function get_posts($options) {
 class Page extends \GoBrave\PostExtender\PostExtender
 {
   protected $something_else;
+  public $a_public_attribute = 'public';
 
   public function something() {
     $this->something_else = 'Asd';

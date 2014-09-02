@@ -38,11 +38,7 @@ abstract class PostExtender
   }
 
   public function __GET($key) {
-    if(isset($this->{$key})) {
-      return $this->{$key};
-    } else {
-      return $this->post->{$key};
-    }
+    return $this->post->{$key};
   }
 
   public static function classToPostType() {

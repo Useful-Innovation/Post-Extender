@@ -83,6 +83,20 @@ class ExtenderTest extends PHPUnit_Framework_TestCase
     $this->assertSame($post->info_title, $this->data[0]->meta_value);
   }
 
+  /**
+   * @expectedException Exception
+   */
+  public function testRegularAttributeThatIsProtected() {
+    $page = Page::get();
+    $page->something();
+    $this->assertSame($page->something_else, 'Asd');
+  }
+
+  public function testRegularAttribute() {
+    $page = Page::get();
+    $this->assertSame($page->a_public_attribute, 'public');
+  }
+
 
 
 
