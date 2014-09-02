@@ -7,6 +7,7 @@ abstract class PostExtender
   use \GoBrave\PostExtender\Helpers\Finders;
 
   private $struct;
+  private $wp;
 
   public $post;
   public static $struct_dir = false;
@@ -21,7 +22,8 @@ abstract class PostExtender
     'meta_value'  => ''
   ];
 
-  private function __construct(\WP_Post $post) {
+  private function __construct(\WP_Post $post, \GoBrave\PostExtender\Wp $wp) {
+    $this->wp = $wp;
     $queryer  = new Queryer();
     $extender = new Extender();
     if(!isset($post->_extended) OR $post->_extended == false) {
@@ -34,7 +36,7 @@ abstract class PostExtender
   }
 
   public static function extend(\WP_Post $post) {
-    return new static($post);
+    return new static($post, new Wp());
   }
 
   public function __GET($key) {
@@ -47,5 +49,13 @@ abstract class PostExtender
 
   public function getStruct() {
     return $this->struct;
+  }
+
+  public function url() {
+    return $this->wp->get_permalink($this->post->ID);
+  }
+
+  public function permalink() {
+    return $this->url();
   }
 }

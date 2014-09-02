@@ -97,6 +97,18 @@ class ExtenderTest extends PHPUnit_Framework_TestCase
     $this->assertSame($page->a_public_attribute, 'public');
   }
 
+  public function testUrl() {
+    $page = Page::single();
+    $url  = $page->url();
+
+    $this->assertTrue(is_string($url), 'Checking if url is string');
+    $this->assertTrue(strlen($url) > 5, 'Checking the length of the url to at least 5 chars');
+
+    $url  = $page->permalink();
+    $this->assertTrue(is_string($url), 'Checking if url is string');
+    $this->assertTrue(strlen($url) > 5, 'Checking the length of the url to at least 5 chars');
+  }
+
 
 
 

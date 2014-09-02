@@ -56,6 +56,10 @@ function get_posts($options) {
   ];
 }
 
+function get_permalink($id) {
+  return 'http://permalink_to_something';
+}
+
 class Page extends \GoBrave\PostExtender\PostExtender
 {
   protected $something_else;
@@ -102,5 +106,5 @@ class Wp implements \GoBrave\PostExtender\IWP
 
   public function get_post($id) {
     return get_post($id);
-  }
+  } 
 }
