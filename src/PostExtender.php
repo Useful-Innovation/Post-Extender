@@ -60,4 +60,15 @@ abstract class PostExtender
   public function permalink() {
     return $this->url();
   }
+
+  public static function loadAllPostTypes() {
+    if(!self::$all_structs) {
+      $post_types = array();
+      foreach(self::$config->getStructDir() . '/*.json') as $post_type) {
+        $post_types[] = json_decode(file_get_contents($post_type));
+      }
+      self::$all_structs = $post_types;
+    }
+    return self::$all_structs;
+  }
 }
