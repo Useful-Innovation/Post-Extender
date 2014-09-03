@@ -74,11 +74,11 @@ class Extender
     if($type === MF_FIELD_TYPE::IMAGE_MEDIA)
       return new DataTypes\Image($value, new WP());
     if($type === MF_FIELD_TYPE::FILE)
-      return new DataTypes\File($value, new WP(), MF_FILES_URL, MF_FILES_PATH);
+      return new DataTypes\File($value, new WP(), MF_FILES_URL, MF_FILES_DIR);
     if($type === MF_FIELD_TYPE::CHECKBOX)
       return (bool)$value;
     if($type === MF_FIELD_TYPE::RELATED_TYPE)
-      return (int)$value;
+      return new DataTypes\Related($value, new WP());
     if($type === MF_FIELD_TYPE::CHECKBOX_LIST)
       return unserialize($value);
     if($type === MF_FIELD_TYPE::MULTILINE)

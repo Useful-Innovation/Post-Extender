@@ -40,6 +40,10 @@ class File
     return $this->base_url . '/' . $this->raw();
   }
 
+  public function dir() {
+    return $this->base_path;
+  }
+
   public function basename() {
     return $this->basename;
   }

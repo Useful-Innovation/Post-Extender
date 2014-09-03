@@ -5,7 +5,7 @@ use \GoBrave\PostExtender\DataTypes\File;
 class FileTest extends PHPUnit_Framework_TestCase
 {
   public function setUp() {
-    $this->file = new File('1407267522some_file.pdf', new Wp(), MF_FILES_URL, MF_FILES_PATH);
+    $this->file = new File('1407267522some_file.pdf', new Wp(), MF_FILES_URL, MF_FILES_DIR);
   }
 
   public function testConstruct() {
@@ -33,8 +33,13 @@ class FileTest extends PHPUnit_Framework_TestCase
     $this->assertTrue($size == 28);
   }
 
+  public function testDir() {
+    $dir = $this->file->dir();
+    $this->assertSame($dir, MF_FILES_DIR);
+  }
+
   public function testSizeFormatted() {
-    $file = new File('1407267522kb_file.pdf', new Wp(), MF_FILES_URL, MF_FILES_PATH);
+    $file = new File('1407267522kb_file.pdf', new Wp(), MF_FILES_URL, MF_FILES_DIR);
     $size = $file->sizeFormatted(File::KB, 2, ',');
     $this->assertTrue($size == '12,43 KB');
     $size = $file->sizeFormatted(File::KB, 1, ',');
@@ -47,7 +52,7 @@ class FileTest extends PHPUnit_Framework_TestCase
     $size = $file->sizeFormatted();
     $this->assertTrue($size == '12 KB');
 
-    $file = new File('1407267522mb_file.pdf', new Wp(), MF_FILES_URL, MF_FILES_PATH);
+    $file = new File('1407267522mb_file.pdf', new Wp(), MF_FILES_URL, MF_FILES_DIR);
     $size = $file->sizeFormatted(File::MB);
     $this->assertTrue($size == '1 MB');
     $size = $file->sizeFormatted(File::MB, 2);

@@ -3,6 +3,8 @@
 use \GoBrave\PostExtender\Extender;
 use \GoBrave\PostExtender\Collection;
 use \GoBrave\PostExtender\DataTypes\Image;
+use \GoBrave\PostExtender\DataTypes\Related;
+use \GoBrave\PostExtender\DataTypes\File;
 
 class ExtenderTest extends PHPUnit_Framework_TestCase
 {
@@ -30,11 +32,12 @@ class ExtenderTest extends PHPUnit_Framework_TestCase
     $p = $posts[4];
 
     $this->assertTrue($p->info_image instanceof Image, 'Is image?');
+    $this->assertTrue($p->info_file instanceof File, 'Is file?');
 
     $page = Page::find(7);
     $group = $page->test[0];
     $this->assertTrue(is_bool($group['checker']));
-    $this->assertTrue(is_int($group['related']));
+    $this->assertTrue($group['related'] instanceof Related, 'Is related?');
     $this->assertSame($group['select'], 'Option 1');
     $this->assertSame($group['checkboxes'][0], 'Option 2');
   }
@@ -46,8 +49,8 @@ class ExtenderTest extends PHPUnit_Framework_TestCase
 
     $this->assertTrue(is_array($rels), 'Checking for array');
     $this->assertTrue(count($rels) === 2, 'Checking array for length');
-    $this->assertTrue($rels[0] === $this->data[3]->meta_value, 'Checking array for first value');
-    $this->assertTrue($rels[1] === $this->data[4]->meta_value, 'Checking array for second value');
+    $this->assertTrue($rels[0] === $this->data[4]->meta_value, 'Checking array for first value');
+    $this->assertTrue($rels[1] === $this->data[5]->meta_value, 'Checking array for second value');
   }
 
   public function testExtendWithDuplicatedGroup() {
@@ -151,6 +154,18 @@ class ExtenderTest extends PHPUnit_Framework_TestCase
     $obj->group_count      = 1;
     $obj->field_duplicated = 0;
     $obj->field_type       = 'image_media';
+    $obj->group_name       = 'info';
+    $obj->group_duplicated = 0;
+
+    $data[] = $obj;
+
+    $obj = new stdClass();
+    $obj->ID               = 4;
+    $obj->meta_key         = 'info_file';
+    $obj->meta_value       = '1234567890File.pdf';
+    $obj->group_count      = 1;
+    $obj->field_duplicated = 0;
+    $obj->field_type       = 'file';
     $obj->group_name       = 'info';
     $obj->group_duplicated = 0;
 
