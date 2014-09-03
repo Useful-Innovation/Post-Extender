@@ -11,7 +11,7 @@ Current version is v1.0-rc2
 Add the following to your composer.json file and run `composer install`
 
     "require": {
-      "gobrave/magic-fields-2-post-extender" : "v1.0-rc1"
+      "gobrave/magic-fields-2-post-extender" : "v1.0-rc2"
     },
     "repositories" : [
       {
