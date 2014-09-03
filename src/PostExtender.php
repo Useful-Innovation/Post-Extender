@@ -6,11 +6,11 @@ abstract class PostExtender
 {
   use \GoBrave\PostExtender\Helpers\Finders;
 
+  private static $config;
   private $struct;
   private $wp;
 
   public $post;
-  public static $struct_dir = false;
 
   protected static $cache = [];
 
@@ -25,14 +25,16 @@ abstract class PostExtender
   private function __construct(\WP_Post $post, \GoBrave\PostExtender\IWp $wp) {
     $this->wp = $wp;
     $queryer  = new Queryer();
-    $extender = new Extender();
+    $extender = new Extender(self::$config);
     if(!isset($post->_extended) OR $post->_extended == false) {
       $post = $extender->extendPost($post, $queryer->getMetaFor([$post]));
     }
     $this->post = $post;
-    if(self::$struct_dir) {
-      $this->struct = new Struct(self::$struct_dir . '/' . $this->post->post_type . '.json');
-    }
+    $this->struct = new Struct(self::$config->getStructDir() . '/' . $this->post->post_type . '.json');
+  }
+
+  public static function setConfig(\GoBrave\PostExtender\Config $config) {
+    self::$config = $config;
   }
 
   public static function extend(\WP_Post $post) {

@@ -18,7 +18,7 @@ trait Finders
 
   public static function all(array $options = []) {
     $queryer  = new Queryer();
-    $extender = new Extender();
+    $extender = new Extender(self::$config);
 
     $options['post_type'] = static::classToPostType();
     $cache_key = serialize($options);

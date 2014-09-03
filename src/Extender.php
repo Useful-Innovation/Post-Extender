@@ -4,8 +4,10 @@ namespace GoBrave\PostExtender;
 
 class Extender
 {
-  public function __construct() {
+  private $config;
 
+  public function __construct(\GoBrave\PostExtender\Config $config) {
+    $this->config = $config;
   }
 
   public function extendPost(\WP_Post $post, $data) {

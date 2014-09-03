@@ -34,7 +34,14 @@ class WPDB
   }
 }
 
-GoBrave\PostExtender\PostExtender::$struct_dir = __DIR__ . '/data';
+define('MF_FILES_URL', 'http://files_mf');
+define('MF_FILES_DIR', __DIR__ . '/data');
+
+GoBrave\PostExtender\PostExtender::setConfig(new GoBrave\PostExtender\Config([
+  'files_url' => MF_FILES_URL,
+  'files_dir' => MF_FILES_DIR,
+  'struct_dir' => __DIR__ . '/data'
+]));
 $wpdb = new WPDB();
 
 $titles = [
@@ -76,9 +83,6 @@ class UIStartpage extends \GoBrave\PostExtender\PostExtender
 {
   const POST_TYPE = 'startpage';
 }
-
-define('MF_FILES_URL', 'http://files_mf');
-define('MF_FILES_DIR', __DIR__ . '/data');
 
 class Wp implements \GoBrave\PostExtender\IWP
 {
