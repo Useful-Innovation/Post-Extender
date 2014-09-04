@@ -5,5 +5,10 @@
   "parent"    : false,
   "has_page"  : false,
   "single"    : false,
-  "rewrite"   : false
+  "rewrite"   : false,
+  "groups"    : [
+    {
+      
+    }
+  ]
 }

@@ -17,32 +17,32 @@ class Struct
     }
   }
 
+  public function name() {
+    return $this->data->post_type ?: false;
+  }
+
   public function parent() {
-    if($this->data->parent) {
-      return $this->data->parent;
-    }
-    return false;
+    return $this->data->parent ?: false;
   }
 
   public function hasPage() {
-    if($this->data->has_page) {
-      return $this->data->has_page;
-    }
-    return false;
+    return $this->data->has_page ?: false;
   }
 
   public function single() {
-    if($this->data->single) {
-      return $this->data->single;
-    }
-    return false;
+    return $this->data->single ?: false;
   }
 
   public function rewrite() {
-    if($this->data->rewrite) {
-      return $this->data->rewrite;
-    }
-    return false;
+    return $this->data->rewrite ?: false;
+  }
+
+  public function singular() {
+    return $this->data->singular ?: false;
+  }
+
+  public function plural() {
+    return $this->data->plural ?: false;
   }
 
 }

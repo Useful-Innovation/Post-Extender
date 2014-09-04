@@ -46,4 +46,16 @@ class StructTest extends PHPUnit_Framework_TestCase
     $this->assertSame($this->s->rewrite(), 'sida');
     $this->assertFalse($this->f->rewrite());
   }
+
+  public function testName() {
+    $this->assertSame($this->s->name(), 'page');
+  }
+
+  public function testSingular() {
+    $this->assertSame($this->s->singular(), 'Sida');
+  }
+
+  public function testPlural() {
+    $this->assertSame($this->s->plural(), 'Sidor');
+  }
 }

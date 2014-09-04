@@ -5,5 +5,10 @@
   "parent"    : "ui_category",
   "has_page"  : true,
   "single"    : true,
-  "rewrite"   : "sida"
+  "rewrite"   : "sida",
+  "groups"    : [
+    {
+      
+    }
+  ]
 }
