@@ -74,7 +74,7 @@ abstract class PostExtender
     return self::$structs;
   }
 
-  private static function findOrCreateStruct($post_type) {
+  public static function findOrCreateStruct($post_type) {
     if(isset(self::$structs[$post_type])) {
       return self::$structs[$post_type];
     }
