@@ -7,6 +7,7 @@ abstract class PostExtender
   use \GoBrave\PostExtender\Helpers\Finders;
 
   private static $config;
+  private static $structs;
   private $struct;
   private $wp;
 
@@ -62,21 +63,21 @@ abstract class PostExtender
   }
 
   public static function loadAllPostTypes() {
-    if(!self::$all_structs) {
-      $post_types = array();
+    if(!self::$structs) {
+      $post_types = [];
       foreach(glob(self::$config->getStructDir() . '/*.json') as $post_type) {
         $post_type_name = pathinfo($post_type);
         $post_types[$post_type_name['filename']] = new Struct($post_type);
       }
-      self::$all_structs = $post_types;
+      self::$structs = $post_types;
     }
-    return self::$all_structs;
+    return self::$structs;
   }
 
   private static function findOrCreateStruct($post_type) {
-    if(isset($all_structs[$post_type])) {
-      return $all_structs[$post_type];
+    if(isset(self::$structs[$post_type])) {
+      return self::$structs[$post_type];
     }
-    return self::$all_structs[$post_type] = new Struct(self::$config->getStructDir() . '/' . $post_type . '.json');
+    return self::$structs[$post_type] = new Struct(self::$config->getStructDir() . '/' . $post_type . '.json');
   }
 }
