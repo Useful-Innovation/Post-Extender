@@ -18,7 +18,7 @@ class Struct
   }
 
   public function name() {
-    return $this->data->post_type ?: false;
+    return $this->data->name ?: false;
   }
 
   public function parent() {

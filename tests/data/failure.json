@@ -1,5 +1,5 @@
 {
-  "post_type" : "page",
+  "name"      : "page",
   "singular"  : "Sida",
   "plural"    : "Sidor",
   "parent"    : false,
