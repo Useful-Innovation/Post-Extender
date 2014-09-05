@@ -63,13 +63,11 @@ abstract class PostExtender
   }
 
   public static function loadAllPostTypes() {
-    if(!self::$structs) {
-      $post_types = [];
-      foreach(glob(self::$config->getStructDir() . '/*.json') as $post_type) {
-        $post_type_name = pathinfo($post_type);
-        $post_types[$post_type_name['filename']] = new Struct($post_type);
+    foreach(glob(self::$config->getStructDir() . '/*.json') as $struct_file) {
+      $post_type = pathinfo($struct_file, PATHINFO_FILENAME);
+      if(!isset(self::$structs[$post_type])) {
+        self::$structs[$post_type] = new Struct($struct_file);
       }
-      self::$structs = $post_types;
     }
     return self::$structs;
   }

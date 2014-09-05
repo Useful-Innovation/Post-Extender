@@ -4,7 +4,7 @@ Extends posts, pages and any custom post type with all it's meta data in one ext
 
 ### Versions
 
-Current version is v1.0-rc2
+Current version is v1.0-rc3
 
 ### Setup
 
