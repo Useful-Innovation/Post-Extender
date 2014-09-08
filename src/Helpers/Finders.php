@@ -4,7 +4,7 @@ namespace GoBrave\PostExtender\Helpers;
 
 use GoBrave\PostExtender\Queryer;
 use GoBrave\PostExtender\Extender;
-use GoBrave\PostExtender\Collection;
+use GoBrave\Util\Collection;
 
 trait Finders
 {

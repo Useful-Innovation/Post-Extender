@@ -1,10 +1,10 @@
 <?php
 
 use \GoBrave\PostExtender\Extender;
-use \GoBrave\PostExtender\Collection;
 use \GoBrave\PostExtender\DataTypes\Image;
 use \GoBrave\PostExtender\DataTypes\Related;
 use \GoBrave\PostExtender\DataTypes\File;
+use \GoBrave\Util\Collection;
 
 class ExtenderTest extends PHPUnit_Framework_TestCase
 {

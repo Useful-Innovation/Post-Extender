@@ -16,7 +16,7 @@ class Extender
 
 
   public function extendPosts(array $posts, $data) {
-    $posts = new Collection($posts);
+    $posts = new \GoBrave\Util\Collection($posts);
     foreach($data as $row) {
       if(isset($posts[$row->ID]) AND (!isset($posts[$row->ID]->_extended) OR $posts[$row->ID]->_extended !== true)) {
         $posts[$row->ID] = $this->loopHelper($posts[$row->ID], $row);
