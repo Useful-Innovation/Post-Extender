@@ -84,7 +84,7 @@ class UIStartpage extends \GoBrave\PostExtender\PostExtender
   const POST_TYPE = 'startpage';
 }
 
-class Wp implements \GoBrave\PostExtender\IWP
+class Wp implements \GoBrave\Util\IWP
 {
   public function __call($a, $b) {
 

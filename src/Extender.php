@@ -2,6 +2,8 @@
 
 namespace GoBrave\PostExtender;
 
+use \GoBrave\Util\WP;
+
 class Extender
 {
   private $config;

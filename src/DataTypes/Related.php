@@ -9,7 +9,7 @@ class Related
   private $id;
   private $wp;
 
-  public function __construct($id, \GoBrave\PostExtender\IWP $wp) {
+  public function __construct($id, \GoBrave\Util\IWP $wp) {
     $this->id = $id;
     $this->wp = $wp;
   }

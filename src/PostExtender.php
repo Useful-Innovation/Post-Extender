@@ -23,7 +23,7 @@ abstract class PostExtender
     'meta_value'  => ''
   ];
 
-  private function __construct(\WP_Post $post, \GoBrave\PostExtender\IWp $wp) {
+  private function __construct(\WP_Post $post, \GoBrave\Util\IWP $wp) {
     $this->wp = $wp;
     $queryer  = new Queryer();
     $extender = new Extender(self::$config);
@@ -39,7 +39,7 @@ abstract class PostExtender
   }
 
   public static function extend(\WP_Post $post) {
-    return new static($post, new \GoBrave\PostExtender\Wp());
+    return new static($post, new \GoBrave\Util\Wp());
   }
 
   public function __GET($key) {

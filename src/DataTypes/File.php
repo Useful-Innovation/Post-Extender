@@ -25,7 +25,7 @@ class File
   private $base_url;
   private $base_path;
 
-  public function __construct($filename, \GoBrave\PostExtender\IWP $wp, $base_url, $base_path) {
+  public function __construct($filename, \GoBrave\Util\IWP $wp, $base_url, $base_path) {
     $this->real_filename = $filename;
     $info = pathinfo(substr($this->real_filename, 10));
     $this->basename  = $info['basename'];
