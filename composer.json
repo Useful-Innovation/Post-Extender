@@ -18,10 +18,5 @@
             "GoBrave\\PostExtender\\": "src/"
         }
     },
-    "repositories" : [
-        {
-            "type" : "git",
-            "url"  : "https://github.com/Useful-Innovation/php-util.git"
-        }
-    ]
+    "repositories": [ { "type": "composer", "url": "http://satis.goingbrave.se" } ]
 }

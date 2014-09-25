@@ -4,14 +4,14 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2d77b599d080fd78837b3d8cb0e58ea2",
+    "hash": "08e193b07310c28dedf19e13a17334a7",
     "packages": [
         {
             "name": "gobrave/util",
             "version": "v1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Useful-Innovation/php-util.git",
+                "url": "http://github.com/Useful-Innovation/php-util",
                 "reference": "b45c450f863f7b6b78dce48cbf58171590ff1204"
             },
             "require-dev": {
@@ -556,7 +556,8 @@
                 },
                 {
                     "name": "Adam Harvey",
-                    "email": "aharvey@php.net"
+                    "email": "aharvey@php.net",
+                    "role": "Lead"
                 },
                 {
                     "name": "Bernhard Schussek",
