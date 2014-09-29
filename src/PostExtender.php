@@ -11,6 +11,7 @@ abstract class PostExtender
   private $struct;
   private $wp;
 
+  public $renderer;
   public $post;
 
   protected static $cache = [];
@@ -23,10 +24,11 @@ abstract class PostExtender
     'meta_value'  => ''
   ];
 
-  private function __construct(\WP_Post $post, \GoBrave\Util\IWP $wp) {
-    $this->wp = $wp;
-    $queryer  = new Queryer();
-    $extender = new Extender(self::$config);
+  private function __construct(\WP_Post $post, \GoBrave\Util\IWP $wp, \GoBrave\Util\Renderer $renderer) {
+    $this->wp       = $wp;
+    $this->renderer = $renderer;
+    $queryer        = new Queryer();
+    $extender       = new Extender(self::$config);
     if(!isset($post->_extended) OR $post->_extended == false) {
       $post = $extender->extendPost($post, $queryer->getMetaFor([$post]));
     }
@@ -39,7 +41,11 @@ abstract class PostExtender
   }
 
   public static function extend(\WP_Post $post) {
-    return new static($post, new \GoBrave\Util\Wp());
+    return new static(
+      $post,
+      new \GoBrave\Util\Wp(),
+      new \GoBrave\Util\Renderer()
+    );
   }
 
   public function __GET($key) {
