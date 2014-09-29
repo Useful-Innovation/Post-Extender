@@ -4,19 +4,19 @@ Extends posts, pages and any custom post type with all it's meta data in one ext
 
 ## Versions
 
-Current version is v1.0
+Current version is v1.0.1
 
 ## Setup
 
-Add the following to your composer.json file and run `composer install`
+Add the following to your composer.json file and run `composer update`
 
     "require": {
-      "gobrave/magic-fields-2-post-extender" : "v1.0-rc2"
+      "gobrave/magic-fields-2-post-extender" : "v1.0.1"
     },
     "repositories" : [
       {
-        "type" : "git",
-        "url"  : "https://github.com/Useful-Innovation/Magic-Fields-2-Post-Extender.git"
+        "type" : "composer",
+        "url"  : "http://satis.goingbrave.se"
       }
     ]
 
