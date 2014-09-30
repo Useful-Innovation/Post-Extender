@@ -4,15 +4,15 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "19d9e0ec2c3c11058528f4ba25eb730f",
+    "hash": "df32f2c72ce34c4022aca859298bc773",
     "packages": [
         {
             "name": "gobrave/util",
-            "version": "v1.2.1",
+            "version": "v1.2.4",
             "source": {
                 "type": "git",
                 "url": "http://github.com/Useful-Innovation/php-util",
-                "reference": "11848b86fbcf3653ad68efc5907d89fb404c8e22"
+                "reference": "9821f497c61270d6063d5d7f3efb6c814ceef74f"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.0.*"
@@ -23,7 +23,8 @@
                     "GoBrave\\Util\\": "./src"
                 }
             },
-            "time": "2014-09-27 06:15:50"
+            "description": "Home of common classes used in GoBrave projects",
+            "time": "2014-09-30 15:04:52"
         }
     ],
     "packages-dev": [
