@@ -22,4 +22,11 @@ class PostExtenderStructTest extends PHPUnit_Framework_TestCase
     $a = PostExtender::loadAllPostTypes();
     $this->assertTrue(isset($a['page']));
   }
+
+  public function testStructIsSameAndNotCopies() {
+    $p1 = Page::find(2);
+    $p2 = Page::find(7);
+
+    $this->assertTrue($p1->getStruct() === $p2->getStruct());
+  }
 }
