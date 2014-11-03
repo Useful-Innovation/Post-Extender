@@ -82,7 +82,7 @@ class Extender
     if($type === MF_FIELD_TYPE::CHECKBOX)
       return (bool)$value;
     if($type === MF_FIELD_TYPE::RELATED_TYPE)
-      return $value ? new DataTypes\Related($value, new WP()) : null;
+      return $value ? new DataTypes\Related($value, new WP(), $this->config->getNamespace()) : null;
     if($type === MF_FIELD_TYPE::CHECKBOX_LIST)
       return unserialize($value);
     if($type === MF_FIELD_TYPE::MULTILINE)

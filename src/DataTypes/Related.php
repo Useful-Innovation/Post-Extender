@@ -8,10 +8,12 @@ class Related
 {
   private $id;
   private $wp;
+  private $namespace;
 
-  public function __construct($id, \GoBrave\Util\IWP $wp) {
-    $this->id = $id;
-    $this->wp = $wp;
+  public function __construct($id, \GoBrave\Util\IWP $wp, $namespace) {
+    $this->id        = $id;
+    $this->wp        = $wp;
+    $this->namespace = trim($namespace, '\\');
   }
 
   public function __toString() {
@@ -20,7 +22,7 @@ class Related
 
   public function get() {
     $post  = $this->wp->get_post($this->id);
-    $class = CaseConverter::snakeToCamel($post->post_type, true);
+    $class = implode('\\', [$this->namespace, CaseConverter::snakeToCamel($post->post_type, true)]);
     return $class::extend($post);
   }
 }

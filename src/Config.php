@@ -7,6 +7,7 @@ class Config
   private $files_url;
   private $files_dir;
   private $struct_dir;
+  private $namespace;
 
   public function __construct($settings = []) {
     if(count($settings) > 0) {
@@ -40,5 +41,13 @@ class Config
 
   public function getStructDir() {
     return $this->struct_dir;
+  }
+
+  public function setNamespace($namespace) {
+    $this->namespace = $namespace;
+  }
+
+  public function getNamespace() {
+    return $this->namespace;
   }
 }
