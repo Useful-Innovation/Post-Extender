@@ -6,17 +6,17 @@ abstract class PostExtender
 {
   use \GoBrave\PostExtender\Helpers\Finders;
 
-  private static $config;
-  private static $structs;
-  private $struct;
-  private $wp;
+  protected static $config;
+  protected static $structs;
+  protected $struct;
+  protected $wp;
 
   public $renderer;
   public $post;
 
   protected static $cache = [];
 
-  private static $default_options = [
+  protected static $default_options = [
     'numberposts' => -1,
     'orderby'     => 'menu_order',
     'order'       => 'ASC',
@@ -24,7 +24,7 @@ abstract class PostExtender
     'meta_value'  => ''
   ];
 
-  private function __construct(\WP_Post $post, \GoBrave\Util\IWP $wp, \GoBrave\Util\Renderer $renderer) {
+  protected function __construct(\WP_Post $post, \GoBrave\Util\IWP $wp, \GoBrave\Util\Renderer $renderer) {
     $this->wp       = $wp;
     $this->renderer = $renderer;
     $queryer        = new Queryer();
