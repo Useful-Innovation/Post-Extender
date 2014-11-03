@@ -11,7 +11,7 @@ class Config
 
   public function __construct($settings = []) {
     if(count($settings) > 0) {
-      foreach(['files_url', 'files_dir', 'struct_dir'] as $key) {
+      foreach($this as $key => $value) {
         if(isset($settings[$key])) {
           $this->{$key} = $settings[$key];
         }
