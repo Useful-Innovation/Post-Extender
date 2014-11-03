@@ -20,6 +20,10 @@ class Queryer
   private function sql($ids) {
     global $wpdb, $table_prefix;
 
+    if(!$ids) {
+      return [];
+    }
+
     $sql = "
       SELECT
         " . $wpdb->prefix . "posts.ID,
