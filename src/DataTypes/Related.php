@@ -10,7 +10,7 @@ class Related
   private $wp;
   private $namespace;
 
-  public function __construct($id, \GoBrave\Util\IWP $wp, $namespace) {
+  public function __construct($id, \GoBrave\Util\IWP $wp, $namespace = '') {
     $this->id        = $id;
     $this->wp        = $wp;
     $this->namespace = trim($namespace, '\\');
