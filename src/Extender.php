@@ -67,7 +67,7 @@ class Extender
   }
 
   private function setDuplicatedField(\WP_Post $post, $row) {
-    if(!isset($post->{$row->meta_key})) {
+    if(!isset($post->{$row->meta_key}) OR !is_array($post->{$row->meta_key})) {
       $post->{$row->meta_key} = [];
     }
     $post->{$row->meta_key}[] = $row->meta_value;
