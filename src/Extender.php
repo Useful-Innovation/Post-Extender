@@ -7,9 +7,11 @@ use \GoBrave\Util\WP;
 class Extender
 {
   private $config;
+  private $factory;
 
   public function __construct(\GoBrave\PostExtender\Config $config) {
-    $this->config = $config;
+    $this->config  = $config;
+    $this->factory = new DataTypeFactory($this->config);
   }
 
   public function extendPost(\WP_Post $post, $data) {
@@ -33,7 +35,7 @@ class Extender
   }
 
   private function loopHelper(\WP_Post $post, $row) {
-    $row->meta_value = $this->fieldByType($row->meta_value, $row->field_type);
+    $row->meta_value = $this->factory->create($row->field_type, $row->meta_value);
 
     if($row->group_duplicated) {
       $post = $this->setDuplicatedGroup($post, $row);
@@ -72,27 +74,6 @@ class Extender
     }
     $post->{$row->meta_key}[] = $row->meta_value;
     return $post;
-  }
-
-  private function fieldByType($value, $type) {
-    if($type === MF_FIELD_TYPE::IMAGE_MEDIA)
-      return $value ? new DataTypes\Image($value, new WP()) : null;
-    if($type === MF_FIELD_TYPE::FILE)
-      return $value ? new DataTypes\File($value, new WP(), MF_FILES_URL, MF_FILES_DIR) : null;
-    if($type === MF_FIELD_TYPE::CHECKBOX)
-      return (bool)$value;
-    if($type === MF_FIELD_TYPE::RELATED_TYPE)
-      return $value ? new DataTypes\Related($value, new WP(), $this->config->getNamespace()) : null;
-    if($type === MF_FIELD_TYPE::CHECKBOX_LIST)
-      return unserialize($value);
-    if($type === MF_FIELD_TYPE::MULTILINE)
-      return $value ? new DataTypes\Multiline($value, new WP()) : null;
-    if($type === MF_FIELD_TYPE::DROPDOWN) {
-      $temp = unserialize($value);
-      return array_pop($temp);
-    }
-
-    return $value;
   }
 
   private function setDefaultGroups(\WP_Post $post, $row, $group_count) {

@@ -4,14 +4,14 @@ Extends posts, pages and any custom post type with all it's meta data in one ext
 
 ## Versions
 
-Current version is v1.0.1
+Current stable version is v1.0.7
 
 ## Setup
 
 Add the following to your composer.json file and run `composer update`
 
     "require": {
-      "gobrave/magic-fields-2-post-extender" : "v1.0.1"
+      "gobrave/magic-fields-2-post-extender" : "~1.0"
     },
     "repositories" : [
       {
@@ -23,9 +23,10 @@ Add the following to your composer.json file and run `composer update`
 The basic setup needs some paths
 
     GoBrave\PostExtender\PostExtender::setConfig(new GoBrave\PostExtender\Config([
-      'files_url' => MF_FILES_URL,              // URL to Magic Fields images
-      'files_dir' => MF_FILES_DIR,              // Path to Magic Fields images
-      'struct_dir' => __DIR__ . '/post_types'   // Path to post-type json-files
+      'files_url'  => MF_FILES_URL,              // URL to Magic Fields images
+      'files_dir'  => MF_FILES_DIR,              // Path to Magic Fields images
+      'struct_dir' => __DIR__ . '/post_types',   // Path to post-type json-files,
+      'namespace'  => 'App\\PostTypes'           // The namespace for post type classes
     ]));
 
 ## Public interface
