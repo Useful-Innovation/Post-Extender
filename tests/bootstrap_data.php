@@ -4,6 +4,12 @@ class DATA
 {
   public static $POST_1;
   public static $POSTS;
+  public static $CONFIG = [
+    'files_url'  => MF_FILES_URL,
+    'files_dir'  => MF_FILES_DIR,
+    'struct_dir' => __DIR__ . '/data',
+    'namespace'  => ''
+  ];
 }
 
 DATA::$POST_1 = [
@@ -101,6 +107,19 @@ DATA::$POST_1 = [
     'group_name'       => "test",
     'group_duplicated' => "1",
     'options'          => serialize([
+    ])
+  ],
+  (object)[
+    'ID'               => "2",
+    'meta_key'         => "test_related_super",
+    'meta_value'       => "2",
+    'group_count'      => "1",
+    'field_duplicated' => "0",
+    'field_type'       => "textbox",
+    'group_name'       => "test",
+    'group_duplicated' => "1",
+    'options'          => serialize([
+      "force_type" => "related_type"
     ])
   ]
 ];

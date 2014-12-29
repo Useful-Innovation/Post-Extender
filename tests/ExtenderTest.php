@@ -16,11 +16,7 @@ class ExtenderTest extends PHPUnit_Framework_TestCase
       new WP_Post(['ID' => 4, 'post_title' => 'Lorem ipsum']),
       new WP_Post(['ID' => 6, 'post_title' => 'Dolor sit amet'])
     ];
-    $this->e = new Extender(new GoBrave\PostExtender\Config([
-      'files_url' => MF_FILES_URL,
-      'files_dir' => MF_FILES_DIR,
-      'struct_dir' => __DIR__ . '/data'
-    ]));
+    $this->e = new Extender(new GoBrave\PostExtender\Config(DATA::$CONFIG));
   }
 
   public function testExtendsWithBasicFields() {

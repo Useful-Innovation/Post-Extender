@@ -1,5 +1,8 @@
 <?php
 
+define('MF_FILES_URL', 'http://files_mf');
+define('MF_FILES_DIR', __DIR__ . '/data');
+
 require_once(__DIR__ . '/bootstrap_namespace.php');
 require_once(__DIR__ . '/bootstrap_data.php');
 
@@ -34,9 +37,6 @@ class WPDB
     return $data;
   }
 }
-
-define('MF_FILES_URL', 'http://files_mf');
-define('MF_FILES_DIR', __DIR__ . '/data');
 
 GoBrave\PostExtender\PostExtender::setConfig(new GoBrave\PostExtender\Config([
   'files_url'  => MF_FILES_URL,

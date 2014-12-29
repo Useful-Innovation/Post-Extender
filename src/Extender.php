@@ -35,7 +35,7 @@ class Extender
   }
 
   private function loopHelper(\WP_Post $post, $row) {
-    $row->meta_value = $this->factory->create($row->field_type, $row->meta_value);
+    $row->meta_value = $this->factory->create($row->field_type, $row->meta_value, (array)@$row->options);
 
     if($row->group_duplicated) {
       $post = $this->setDuplicatedGroup($post, $row);

@@ -72,4 +72,11 @@ class DataTypeFactoryTest extends PHPUnit_Framework_TestCase
     $this->assertTrue($obj === $data);
   }
 
+
+
+  public function testForcedDataType() {
+    $obj = Page::find(2);
+    $this->assertTrue($obj->test[0]['related_super'] instanceof GoBrave\PostExtender\DataTypes\Related);
+  }
+
 }

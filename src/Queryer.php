@@ -14,7 +14,10 @@ class Queryer
     foreach($posts as $post) {
       $ids[] = $post->ID;
     }
-    return $this->sql($ids);
+    return array_map(function($item) {
+      $item->options = unserialize($item->options);
+      return $item;
+    }, $this->sql($ids));
   }
 
   private function sql($ids) {
@@ -32,6 +35,7 @@ class Queryer
         " . $wpdb->prefix . "mf_post_meta.group_count,
         " . $table_prefix . "mf_custom_fields.duplicated as field_duplicated,
         " . $table_prefix . "mf_custom_fields.type as field_type,
+        " . $table_prefix . "mf_custom_fields.options as options,
         " . $table_prefix . "mf_custom_groups.name as group_name,
         " . $table_prefix . "mf_custom_groups.duplicated as group_duplicated
       FROM
