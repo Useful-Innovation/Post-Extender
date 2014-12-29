@@ -4,14 +4,14 @@ Extends posts, pages and any custom post type with all it's meta data in one ext
 
 ## Versions
 
-Current stable version is v1.0.7
+Current stable version is v1.1
 
 ## Setup
 
 Add the following to your composer.json file and run `composer update`
 
     "require": {
-      "gobrave/magic-fields-2-post-extender" : "~1.0"
+      "gobrave/magic-fields-2-post-extender" : "~1.1"
     },
     "repositories" : [
       {
