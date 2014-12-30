@@ -12,7 +12,15 @@ class Multiline
     $this->wp = $wp;
   }
 
-  public function __toString() {
+  public function plain() {
+    return strip_tags($this->content());
+  }
+
+  public function content() {
     return $this->wp->apply_filters('the_content', $this->content);
+  }
+
+  public function __toString() {
+    return $this->content();
   }
 }

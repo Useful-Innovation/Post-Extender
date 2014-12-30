@@ -15,4 +15,12 @@ class MultilineTest extends PHPUnit_Framework_TestCase
   public function testToString() {
     $this->assertSame((string)$this->multiline, '<p>this is content</p>');
   }
+
+  public function testGetContent() {
+    $this->assertSame($this->multiline->content(), '<p>this is content</p>');
+  }
+
+  public function testPlainString() {
+    $this->assertSame($this->multiline->plain(), 'this is content');
+  }
 }
