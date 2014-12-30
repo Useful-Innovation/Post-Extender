@@ -2,7 +2,8 @@
 
 namespace GoBrave\PostExtender;
 
-use \GoBrave\Util\WP;
+use GoBrave\Util\WP;
+use GoBrave\Util\MF_FIELD_TYPE;
 
 class DataTypeFactory
 {
