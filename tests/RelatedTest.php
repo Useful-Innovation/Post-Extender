@@ -22,6 +22,11 @@ class RelatedTest extends PHPUnit_Framework_TestCase
     $this->assertTrue($post->ID == 2);
   }
 
+  public function testGetId() {
+    $id = $this->related->id();
+    $this->assertSame($id, 2);
+  }
+
   public function testRelatedGetWhenClassIsInAnotherNamespace() {
     $related = new Related(2, new Wp(), 'Something');
     $p = $related->get();

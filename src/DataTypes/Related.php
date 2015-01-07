@@ -17,7 +17,11 @@ class Related
   }
 
   public function __toString() {
-    return (string)$this->id;
+    return (string)$this->id();
+  }
+
+  public function id() {
+    return $this->id;
   }
 
   public function get() {
