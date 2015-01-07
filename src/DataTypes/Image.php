@@ -1,8 +1,8 @@
-<?php
+<?php namespace GoBrave\PostExtender\DataTypes;
 
-namespace GoBrave\PostExtender\DataTypes;
+use GoBrave\PostExtender\DataTypeInterface;
 
-class Image
+class Image implements DataTypeInterface
 {
   private $id;
   private $wp;
@@ -10,6 +10,10 @@ class Image
   public function __construct($id, \GoBrave\Util\IWP $wp) {
     $this->id = $id;
     $this->wp = $wp;
+  }
+
+  public function raw() {
+    return $this->id;
   }
 
   public function __toString() {

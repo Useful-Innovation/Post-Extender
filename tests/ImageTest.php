@@ -25,4 +25,9 @@ class ImageTest extends PHPUnit_Framework_TestCase
     $url = $this->image->url('fail');
     $this->assertFalse($url);
   }
+
+  public function testRaw() {
+    $id = $this->image->raw();
+    $this->assertSame($id, 53);
+  }
 }

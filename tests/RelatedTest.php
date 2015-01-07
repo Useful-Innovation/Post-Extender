@@ -22,8 +22,8 @@ class RelatedTest extends PHPUnit_Framework_TestCase
     $this->assertTrue($post->ID == 2);
   }
 
-  public function testGetId() {
-    $id = $this->related->id();
+  public function testRaw() {
+    $id = $this->related->raw();
     $this->assertSame($id, 2);
   }
 

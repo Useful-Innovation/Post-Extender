@@ -1,10 +1,9 @@
-<?php
+<?php namespace GoBrave\PostExtender\DataTypes;
 
-namespace GoBrave\PostExtender\DataTypes;
+use GoBrave\PostExtender\Helpers\CaseConverter;
+use GoBrave\PostExtender\DataTypeInterface;
 
-use \GoBrave\PostExtender\Helpers\CaseConverter;
-
-class Related
+class Related implements DataTypeInterface
 {
   private $id;
   private $wp;
@@ -17,10 +16,10 @@ class Related
   }
 
   public function __toString() {
-    return (string)$this->id();
+    return (string)$this->raw();
   }
 
-  public function id() {
+  public function raw() {
     return $this->id;
   }
 

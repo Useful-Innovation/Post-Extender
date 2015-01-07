@@ -1,8 +1,8 @@
-<?php
+<?php namespace GoBrave\PostExtender\DataTypes;
 
-namespace GoBrave\PostExtender\DataTypes;
+use GoBrave\PostExtender\DataTypeInterface;
 
-class File
+class File implements DataTypeInterface
 {
   const APPROPRIATE = 'APPROPRIATE';
   const B  = 1;
