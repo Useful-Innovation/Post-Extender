@@ -18,6 +18,7 @@ class WP_Post
 class WPDB
 {
   public $prefix = 'wp_';
+  public $base_prefix = 'wp_';
   public static $counter = 0;
   public function __construct() {
     register_shutdown_function(function() {
