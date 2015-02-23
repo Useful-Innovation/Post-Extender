@@ -45,4 +45,32 @@ class Struct
     return $this->data->plural ?: false;
   }
 
+  public function grouping() {
+    return isset($this->data->grouping) ? $this->data->grouping : false;
+  }
+
+  public function groupingBy() {
+    return $this->data->grouping->by ?: false;
+  }
+
+  public function groupingKey() {
+    return $this->data->grouping->key ?: false;
+  }
+
+  public function getFieldsByType($type) {
+    $return_array = [];
+    foreach($this->data->groups as $group){
+      foreach($group->fields as $field){
+        if($field->type === $type) {
+          $return_array[] = [
+            'group'       => $group->name,
+            'field'       => $field->name,
+            'duplicated'  => $field->duplicated,
+            'options'     => $field->options
+          ];
+        }
+      }
+    }
+    return $return_array;
+  }
 }
