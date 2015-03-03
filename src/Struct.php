@@ -60,14 +60,16 @@ class Struct
   public function getFieldsByType($type) {
     $return_array = [];
     foreach($this->data->groups as $group){
-      foreach($group->fields as $field){
-        if($field->type === $type) {
-          $return_array[] = [
-            'group'       => $group->name,
-            'field'       => $field->name,
-            'duplicated'  => $field->duplicated,
-            'options'     => $field->options
-          ];
+      if(isset($group->fields)){
+        foreach($group->fields as $field){
+          if($field->type === $type) {
+            $return_array[] = [
+              'group'       => $group->name,
+              'field'       => $field->name,
+              'duplicated'  => $field->duplicated,
+              'options'     => $field->options
+            ];
+          }
         }
       }
     }
