@@ -26,6 +26,10 @@ class Image implements DataTypeInterface
       return false;
     }
 
+    if(defined('CUSTOM_UPLOAD_PATH')){
+      $image[0] = str_replace(wp_upload_dir('base_url'), CUSTOM_UPLOAD_PATH, $image[0]);
+    }
+
     return $image[0];
   }
 }
