@@ -25,7 +25,10 @@ class Related implements DataTypeInterface
 
   public function get() {
     $post  = $this->wp->get_post($this->id);
-    $class = implode('\\', [$this->namespace, CaseConverter::snakeToCamel($post->post_type, true)]);
-    return $class::extend($post);
+    if($post){
+      $class = implode('\\', [$this->namespace, CaseConverter::snakeToCamel($post->post_type, true)]);
+      return $class::extend($post);
+    }
+    return null;
   }
 }
