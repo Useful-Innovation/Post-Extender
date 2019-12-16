@@ -41,4 +41,13 @@ class Image implements DataTypeInterface
         }
         return $meta;
     }
+
+    public function description()
+    {
+        $meta = get_post($this->id);
+        if (!$meta->post_content) {
+            return false;
+        }
+        return $meta->post_content;
+    }
 }
