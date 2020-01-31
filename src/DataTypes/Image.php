@@ -50,4 +50,14 @@ class Image implements DataTypeInterface
         }
         return $meta->post_content;
     }
+
+    public function caption()
+    {
+        $caption = $this->wp->wp_get_attachment_caption($this->id);
+        if (!$caption) {
+            return false;
+        }
+
+        return $caption;
+    }
 }
