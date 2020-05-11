@@ -57,8 +57,6 @@ class Queryer
           ON
             " . $wpdb->base_prefix . "mf_custom_fields.custom_group_id = " . $wpdb->base_prefix . "mf_custom_groups.id
       WHERE
-        " . $wpdb->prefix . "posts.post_status = 'publish'
-        AND
         " . $wpdb->prefix . "posts.ID IN (" . implode(', ', $ids) . ")
         AND
         " . $wpdb->base_prefix . "mf_custom_groups.post_type = " . $wpdb->prefix . "posts.post_type
